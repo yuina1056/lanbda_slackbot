@@ -1,1 +1,3 @@
 # lanbda_slackbot
+
+lambdaでslackbotを動かすお試し
