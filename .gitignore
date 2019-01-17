@@ -1,2 +1,2 @@
-slack_token.env
+.env
 vendor/*
