@@ -1,20 +1,15 @@
-# frozen_string_literal: true
-
+require 'slack-ruby-client'
 require 'json'
-require 'slack'
-require 'dotenv'
+TOKEN = ENV['SLACK_TOKEN']
 
-def slack_post(channel, message)
-  Dotenv.load
-  Slack.configure do |config|
-    config.token = ENV['SLACK_TOKEN']
+def slack_post
+  Slack.configure do |conf|
+    conf.token = TOKEN
   end
-  Slack.chat_postMessage(channel: channel, text: message)
+
+  client = Slack::Web::Client.new
+  p client.auth_test
+  client.chat_postMessage(channel: 'C9LGQ06LT', text: 'Hello World', as_user: true)
 end
 
-def lambda_handler(event:, context:)
-  slack_post('#general', 'testMessage')
-  # TODO: implement
-  { statusCode: 200, body: JSON.generate('Hello from Lambda!') }
-end
-p slack_post('#general', 'testMessage')
+slack_post
