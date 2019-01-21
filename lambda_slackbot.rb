@@ -9,7 +9,7 @@ def slack_post
 
   client = Slack::Web::Client.new
   p client.auth_test
-  client.chat_postMessage(channel: 'C9LGQ06LT', text: 'Hello World', as_user: true)
+  client.chat_postMessage(channel: '#general', text: 'Hello World')
 end
 
 slack_post
