@@ -1,10 +1,9 @@
 require 'slack-ruby-client'
 require 'json'
-TOKEN = ENV['SLACK_TOKEN']
 
 def slack_post
   Slack.configure do |conf|
-    conf.token = TOKEN
+    conf.token = ENV['SLACK_TOKEN']
   end
 
   client = Slack::Web::Client.new
